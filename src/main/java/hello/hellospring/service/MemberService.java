@@ -24,11 +24,13 @@ public class MemberService {
         return member.getId();
     }
 
+    // 같은 이름이 있는 중복 회원x
     private void validateDuplicateMember(Member member) {
-        memberRepository.findByName(member.getName())
+        memberRepository.findByName(member.getName()) // = Optional<Member> 객체
                 .ifPresent(m -> {
                     throw new IllegalStateException("이미 존재하는 회원입니다.");
                 });
+                // ifPresent: Optional 클래스 함수. null이 아닐 시 괄호 안의 코드를 수행
     }
 
     /**

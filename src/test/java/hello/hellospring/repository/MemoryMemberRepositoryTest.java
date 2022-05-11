@@ -2,17 +2,20 @@ package hello.hellospring.repository;
 
 import hello.hellospring.domain.Member;
 import org.assertj.core.api.Assertions;
+import org.assertj.core.api.ObjectAssert;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.*;
 
 class MemoryMemberRepositoryTest {
 
     MemoryMemberRepository repository = new MemoryMemberRepository();
 
+    /* 각 테스트 케이스마다 repository 초기화 */
     @AfterEach
     public void afterEach() {
         repository.clearStore();
@@ -25,8 +28,12 @@ class MemoryMemberRepositoryTest {
 
         repository.save(member);
 
-        Member result = repository.findById(member.getId()).get();
-        assertThat(member).isEqualTo(result);
+        Member result = repository.findById(member.getId()).get(); // get(): Optional 벗겨서 반환
+
+        // System.out.println("result = " + (result == member));
+        // assertEquals(member, result); // junit 제공
+        assertThat(result).isEqualTo(member); // assertj 제공
+        // [tip] 인자에 커서 놓고 ctrl + P: 설명
     }
 
     @Test
