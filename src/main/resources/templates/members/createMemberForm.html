@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <!-- controller에서 url이 일치하는 @PostMapping과 매핑된다. -->
+    <form action="/members/new" method="post">
+        <div class="form-group">
+            <label for="name">이름</label>
+            <input type="text" id="name" name="name" placeholder="이름을 입력하세요">
+            <!-- MemberForm의 setName(name) 함수 호출 -->
+        </div>
+        <button type="submit">등록</button>
+        <!-- ↑ action url에 method 방식으로 key, value 값이 전달된다. -->
+
+    </form>
+</div> <!-- /container -->
+</body>
+</html>

@@ -33,7 +33,7 @@ class MemoryMemberRepositoryTest {
         // System.out.println("result = " + (result == member));
         // assertEquals(member, result); // junit 제공
         assertThat(result).isEqualTo(member); // assertj 제공
-        // [tip] 인자에 커서 놓고 ctrl + P: 설명
+        // ↑ [tip] 인자에 커서 놓고 ctrl + P: 설명
     }
 
     @Test
